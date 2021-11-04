@@ -1,0 +1,16 @@
+{
+    "short_name": "nuvi Home App",
+    "name": "nuvi HomeKit Connect App",
+    "start_url": "./",
+    "background_color": "#313236",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#313236",
+    "shortcuts": [{
+        "name": "Home",
+        "short_name": "Home",
+        "description": "View and control devices",
+        "url": "/dist/index.html"
+    }],
+    "description": "Connect to your HomeKit Automation System and manage your devices from the comfort of your home"
+}

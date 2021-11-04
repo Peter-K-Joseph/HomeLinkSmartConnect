@@ -1,0 +1,762 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@300&family=Titillium+Web&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  user-select: none;
+}
+
+body {
+  background-color: #f2f4f5;
+  padding-bottom: 50px;
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 6px;
+}
+.top .left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.top .left * {
+  font-family: "Montserrat", sans-serif;
+  margin: 5px;
+}
+.top .left h4 {
+  color: rgba(0, 0, 0, 0.6);
+}
+.top .left h3 {
+  font-size: 1.5rem;
+}
+.top .right {
+  background-image: url("../resource/profile1.jpeg");
+  border-radius: 50%;
+  padding: 35px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.metrics {
+  border-radius: 0.75rem;
+  border: #e6e8ec solid;
+  padding: 20px;
+  margin: 10px 10px;
+  display: flex;
+}
+.metrics * {
+  font-family: "Lato", sans-serif;
+}
+.metrics .surge {
+  display: flex;
+  width: 40%;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+.metrics .display {
+  width: 100%;
+}
+.metrics .display .usage {
+  padding: 3px 0;
+  font-weight: 600;
+}
+.metrics .display .usage span {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+nav.rooms {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+nav.rooms span {
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #2f3135;
+  font-family: "Titillium Web", sans-serif;
+  padding: 0 7px;
+  position: relative;
+  padding-bottom: 3px;
+  font-weight: 500;
+}
+nav.rooms span.active_room::after {
+  content: "";
+  width: 80%;
+  height: 1.5px;
+  background: black;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+}
+nav.rooms span#show-rooms {
+  opacity: 0.5;
+}
+
+.dash {
+  margin: 10px 0;
+  display: flex;
+  flex: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.dash .device {
+  border: #e6e8ec solid;
+  width: 120px;
+  height: 145px;
+  padding: 15px;
+  border-radius: 0.75rem;
+  margin: 10px;
+  transition: 0.3s all ease-in-out;
+  font-family: "Titillium Web", sans-serif;
+  animation: scaleUp 0.6s;
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.dash .device.active_device {
+  background-color: #313236;
+  box-shadow: 0 0 30px -5px #313236;
+  border: #313236 solid;
+}
+.dash .device.active_device .avatar {
+  fill: white;
+}
+.dash .device.active_device .devname, .dash .device.active_device .room {
+  color: white;
+}
+.dash .device .avatar {
+  width: 40%;
+}
+.dash .device .room {
+  font-size: 0.8rem;
+}
+.dash .device .devname {
+  font-size: 1.2rem;
+}
+.dash .device .switch {
+  display: flex;
+}
+.dash .device .switch input[type=checkbox] {
+  margin: 10px 0;
+  transform: scale(1.1);
+}
+.dash .device .switch input[type=checkbox]:checked {
+  background-color: #31c4a0;
+  border: none;
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type=checkbox],
+input[type=radio] {
+    --active: #275EFE;
+    --active-inner: #fff;
+    --focus: 2px rgba(39, 94, 254, .3);
+    --border: #BBC1E1;
+    --border-hover: #BBC1E1;
+    --background: #fff;
+    --disabled: #F6F8FF;
+    --disabled-inner: #E1E6F9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+  }
+  input[type=checkbox]:after,
+input[type=radio]:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+  }
+  input[type=checkbox]:checked,
+input[type=radio]:checked {
+    --b: var(--active);
+    --bc: var(--active);
+    --d-o: .3s;
+    --d-t: .6s;
+    --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+  }
+  input[type=checkbox]:disabled,
+input[type=radio]:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+  input[type=checkbox]:disabled:checked,
+input[type=radio]:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+  }
+  input[type=checkbox]:disabled + label,
+input[type=radio]:disabled + label {
+    cursor: not-allowed;
+  }
+  input[type=checkbox]:hover:not(:checked):not(:disabled),
+input[type=radio]:hover:not(:checked):not(:disabled) {
+    --bc: var(--border-hover);
+  }
+  input[type=checkbox]:focus,
+input[type=radio]:focus {
+    box-shadow: 0 0 0 var(--focus);
+  }
+  input[type=checkbox]:not(.switch),
+input[type=radio]:not(.switch) {
+    width: 21px;
+  }
+  input[type=checkbox]:not(.switch):after,
+input[type=radio]:not(.switch):after {
+    opacity: var(--o, 0);
+  }
+  input[type=checkbox]:not(.switch):checked,
+input[type=radio]:not(.switch):checked {
+    --o: 1;
+  }
+  input[type=checkbox] + label,
+input[type=radio] + label {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+
+  input[type=checkbox].switch {
+    width: 38px;
+    border-radius: 11px;
+  }
+  input[type=checkbox].switch:after {
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--ab, var(--border));
+    transform: translateX(var(--x, 0));
+  }
+  input[type=checkbox].switch:checked {
+    --ab: var(--active-inner);
+    --x: 17px;
+  }
+  input[type=checkbox].switch:disabled:not(:checked):after {
+    opacity: 0.6;
+  }
+
+  input[type=radio] {
+    border-radius: 50%;
+  }
+  input[type=radio]:after {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: var(--active-inner);
+    opacity: 0;
+    transform: scale(var(--s, 0.7));
+  }
+  input[type=radio]:checked {
+    --s: .5;
+  }
+}
+.main-container {
+  overflow-x: hidden;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 6px 0px 12px 0px;
+}
+#main .security-container {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#main .security-container * {
+  margin: 10px 0;
+}
+#main .security-container .alarm {
+  width: 100%;
+  background-color: white;
+  border-radius: 0.75rem;
+  display: flex;
+  overflow: hidden;
+  font-family: "Titillium Web", sans-serif;
+  flex-direction: column;
+  background-color: #313236;
+}
+#main .security-container .alarm h4 {
+  padding: 15px 20px 5px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+#main .security-container .alarm h4 span {
+  margin: 0;
+  width: 100%;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+#main .security-container .alarm.arm h4 span {
+  color: #ff5252;
+}
+#main .security-container .alarm.arm button {
+  background-color: #31c4a0;
+  font-size: 0.9rem;
+  color: white;
+  margin: 0;
+  padding: 10px;
+  border: none;
+}
+#main .security-container #camera_monitor {
+  background-color: white;
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 0.75rem;
+  font-family: "Titillium Web", sans-serif;
+}
+#main .security-container #camera_monitor .cctv_preview.off {
+  margin: 5px 0;
+  background-color: #df3f53;
+  width: 100%;
+  height: 150px;
+  border-radius: calc(.75rem / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#main .security-container #camera_monitor .cctv_preview h4 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+#main .security-container #camera_monitor .cctv_preview span {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  color: white;
+}
+#main .security-container #activity_nearby {
+  background-color: white;
+  overflow: hidden;
+  padding: 10px 0 0 0;
+  border-radius: 0.75rem;
+  font-family: "Titillium Web", sans-serif;
+}
+#main .security-container #activity_nearby h3 {
+  margin: 0;
+  margin: 10px;
+}
+#main .security-container #activity_nearby .activity_container {
+  margin: 10px;
+  border: #e6e8ec solid;
+  border-radius: calc(.75rem / 2);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+#main .security-container #activity_nearby .activity_container .class_activity {
+  margin-right: 7px;
+  border: none;
+  padding: 0;
+  width: 10px;
+  background-color: #44d275;
+  border-radius: 0;
+}
+#main .security-container #activity_nearby .activity_container div {
+  border: #e6e8ec solid;
+  border-radius: calc(.75rem / 2);
+  display: flex;
+  justify-content: center;
+  padding: 3px 10px;
+}
+#main .security-container #activity_nearby .activity_container .activity_icon {
+  border: none;
+  width: 30px;
+  background-color: #f2f4f5;
+  margin: 5px 0;
+}
+#main .security-container #activity_nearby .activity_container .acitivity_detail {
+  width: 100%;
+  display: flex;
+  border: none;
+  flex-direction: column;
+}
+#main .security-container #activity_nearby .activity_container * {
+  margin: 0;
+}
+#main .security-container #activity_nearby .activity_container .data-location {
+  font-weight: 700;
+}
+#main .security-container #activity_nearby .activity_container .data-time {
+  opacity: 0.6;
+}
+#main .security-container #activity_nearby button {
+  margin: 0;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  background-color: #1d8ff9;
+  color: white;
+}
+#main #settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 5%;
+  font-family: "Poppins", sans-serif;
+}
+#main #settings-container .app_settings_display {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 0px 10px 20px 5px;
+}
+#main #settings-container .app_settings_display h3 {
+  margin: 10px 0 0 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+#main #settings-container .app_settings_display p {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+#main #settings-container .app_settings_display p span {
+  margin: 0;
+  padding: 0;
+  font-size: 0.7rem;
+}
+#main #settings-container .app_settings_display button.reboot {
+  border: none;
+  width: 70%;
+  padding: 10px;
+  margin: 0 15%;
+  border-radius: 50px;
+  background-color: #fa4065;
+  color: white;
+}
+#main #settings-container .app_settings_display .storage_show {
+  margin-bottom: 10px;
+}
+#main #settings-container .app_settings_display .storage_show div:nth-of-type(1) {
+  width: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  background-color: #c9cbd1;
+}
+#main #settings-container .app_settings_display .storage_show div:nth-of-type(1) span.storage_used {
+  background-color: #1d8ff9;
+  height: 10px;
+}
+#main #settings-container .app_settings_display .storage_show div:nth-of-type(2) {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 3px 5px;
+}
+#main #settings-container .app_settings_display .option_settings * {
+  text-align: left;
+}
+#main #settings-container .app_settings_display .option_settings div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#main #settings-container .app_settings_display .option_settings div div {
+  display: flex;
+  flex-direction: column;
+}
+#main #settings-container .app_settings_display .option_settings div div h3 {
+  font-size: 1rem;
+}
+#main #settings-container .app_settings_display .option_settings div div p {
+  font-size: 0.9rem;
+}
+#main #settings-container .app_settings_display .option_settings div .option_control {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 60%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#main #settings-container .app_settings_display .option_settings div .option_control input[type=checkbox].switch:checked {
+  --ab: var(--active);
+}
+#main #settings-container .account {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+}
+#main #settings-container .account * {
+  margin: 0;
+  padding: 0 10px;
+}
+#main #settings-container .account .profile_image_settings {
+  padding: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transform: perspective(100px) rotateY(-10deg) !important;
+}
+#main #settings-container .account div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#main #settings-container .account div * {
+  padding: 0;
+  margin: 0;
+}
+#main #settings-container .account div .user_name {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#main #settings-container .account div .accessLevel {
+  font-size: 0.9rem;
+}
+#main #settings-container .account div .accessDefinition {
+  opacity: 0.6;
+  font-size: 0.7rem;
+}
+#main #room_all {
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+}
+#main #room_all .show_roomlist {
+  width: calc(100% - 50px);
+  padding: 10px;
+  margin: 10px 15px;
+  max-width: 800px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  height: 50px;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  border: #d0d2d8 solid;
+  background-color: #3a3a3f;
+  color: #ffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#main #room_all .show_roomlist .arrow svg {
+  opacity: 0.6;
+  width: 25px;
+  height: 25px;
+  fill: #ffff;
+}
+#main #room_all .show_roomlist span {
+  font-weight: 300;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+#main .account {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 0;
+}
+#main .account * {
+  padding: 15px 0;
+}
+
+.go-back {
+  position: fixed;
+  bottom: 20px;
+  width: 80%;
+  left: 10%;
+  padding: 5px 0;
+  border-radius: 50px;
+  background-color: #345ada;
+  fill: white;
+  transition: 0.3s all ease-in-out;
+  color: white;
+  transition: 0.3s all ease-in-out;
+  transform: translate(0);
+}
+.go-back div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+.go-back div svg {
+  width: 30px;
+}
+.go-back div span {
+  padding: 10px 0;
+  display: flex;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  justify-self: center;
+  align-items: center;
+}
+
+nav.bottombar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 20px;
+  transition: 0.3s all ease-in-out;
+  width: 20%;
+  left: 7%;
+  background-color: white;
+  justify-content: center;
+  border-radius: 2.5rem;
+  transform: translate(0);
+  animation: bottomUp 1s ease-in-out;
+}
+nav.bottombar span {
+  padding: 3px;
+  transition: 0.3s all ease-in-out;
+  width: 10%;
+  margin: 7px auto;
+  border-radius: 50%;
+}
+nav.bottombar span svg {
+  transform: scale(0.7);
+}
+nav.bottombar span.active {
+  background-color: #313236;
+  border-radius: 0.75rem;
+}
+nav.bottombar span.active svg {
+  fill: white;
+}
+
+.hide {
+  transform: translateY(200px) !important;
+}
+
+.fade-out {
+  transform: scale(1.5);
+  opacity: 0;
+  transition: 0.3s all cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes bottomUp {
+  0% {
+    transform: translateY(250px);
+  }
+  50% {
+    transform: translateY(250px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 1200px) {
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type=checkbox]:focus,
+input[type=radio]:focus {
+      box-shadow: none;
+    }
+  }
+  nav.bottombar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 10px;
+    width: 40%;
+    left: 40%;
+    margin: 0 30%;
+    background-color: white;
+    justify-content: center;
+    border-radius: 2.5rem;
+  }
+  nav.bottombar span {
+    padding: 3px;
+    width: 10%;
+    margin: 7px auto;
+  }
+  nav.bottombar span svg {
+    transform: scale(0.7);
+  }
+  nav.bottombar span.active {
+    background-color: #313236;
+    border-radius: 0.75rem;
+  }
+  nav.bottombar span.active svg {
+    fill: white;
+  }
+}
+@media screen and (max-width: 700px) {
+  nav.bottombar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    left: 0;
+    margin: 0 5%;
+    background-color: white;
+    justify-content: center;
+    border-radius: 2.5rem;
+  }
+  nav.bottombar span {
+    padding: 3px;
+    width: 10%;
+    margin: 7px auto;
+  }
+  nav.bottombar span svg {
+    transform: scale(0.7);
+  }
+  nav.bottombar span.active {
+    background-color: #313236;
+    border-radius: 0.75rem;
+  }
+  nav.bottombar span.active svg {
+    fill: white;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
